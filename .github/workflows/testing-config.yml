@@ -31,14 +31,14 @@ jobs:
       - name: check branch
         working-directory: ./git-test
         run: git branch
-      - name: merge branches
-        working-directory: ./git-test
-        run: git merge bubble-sort
       - name: init git config
         working-directory: ./git-test
         run: |
           git config --global user.email "actions_github@gmail.com"
           git config --global user.name "Github Actions"          
+      - name: merge branches
+        working-directory: ./git-test
+        run: git merge bubble-sort
       - name: repository status
         working-directory: ./git-test
         run: git status
