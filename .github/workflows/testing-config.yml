@@ -40,12 +40,12 @@ jobs:
         run: git clone --branch master https://github.com/$REPOSITORY_AND_OWNER_NAME.git
       - name: cloning another branch 
         working-directory: ./${{ github.event.repository.name }}
-        run: git fetch origin $CUR_BRANCH_NAME:$CUR_BRANCH_NAME
+        run: git fetch origin ${GITHUB_REF##*/}:${GITHUB_REF##*/}
 
       - name: Run tests for $CUR_BRANCH_NAME
         working-directory: ./${{ github.event.repository.name }}
         run: |
-          git checkout $CUR_BRANCH_NAME
+          git checkout ${GITHUB_REF##*/}
           mvn test
       - name: Run tests for master
         working-directory: ./${{ github.event.repository.name }}
@@ -53,7 +53,7 @@ jobs:
           git checkout $TARGET_BRANCH_NAME
           mvn test
 
-      - name: merge master with $CUR_BRANCH_NAME
+      - name: merge master with ${GITHUB_REF##*/}
         working-directory: ./${{ github.event.repository.name }}
         run: git merge selection-sort
       - name: Run tests for merge result
