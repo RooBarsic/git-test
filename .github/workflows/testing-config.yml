@@ -48,7 +48,7 @@ jobs:
       - name: showing REPOSITORY_AND_OWNER_NAME
         run: echo $REPOSITORY_AND_OWNER_NAME
       - name: showing CUR_REPOSITORY_NAME
-        run: echo $CUR_REPOSITORY_NAME
+        run: echo ./$CUR_REPOSITORY_NAME
       
       - name: showwww....
         run: echo https://github.com/$REPOSITORY_AND_OWNER_NAME.git
