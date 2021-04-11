@@ -4,7 +4,7 @@ env:
   GIT_DEFAULT_USER_EMAIL : "actions_github@gmail.com"
 
   TARGET_BRANCH_NAME : "master" #${{ github.event.pull_request.base.ref }}
-  CUR_BRANCH_NAME : $GITHUB_REF##*/  #"selection-sort" #"##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+  CUR_BRANCH_NAME : ${GITHUB_REF##*/}  #"selection-sort" #"##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
   CUR_REPOSITORY_NAME : ./${{ github.event.repository.name }}
   REPOSITORY_AND_OWNER_NAME : ${{ github.repository }}
 
@@ -35,34 +35,30 @@ jobs:
       - name: cur branch
         run: echo ${GITHUB_REF##*/}
         
-      - name: testii
-        run: echo $GITHUB_REF
-      - name: CI_HEAD_REF_SLUG
-        run: echo "$CI_HEAD_REF_SLUG"
 
-#       - name: git clone
-#         run: git clone --branch master https://github.com/$REPOSITORY_AND_OWNER_NAME.git
-#       - name: cloning another branch 
-#         working-directory: ./${{ github.event.repository.name }}
-#         run: git fetch origin $CUR_BRANCH_NAME:$CUR_BRANCH_NAME
+      - name: git clone
+        run: git clone --branch master https://github.com/$REPOSITORY_AND_OWNER_NAME.git
+      - name: cloning another branch 
+        working-directory: ./${{ github.event.repository.name }}
+        run: git fetch origin $CUR_BRANCH_NAME:$CUR_BRANCH_NAME
 
-#       - name: Run tests for $CUR_BRANCH_NAME
-#         working-directory: ./${{ github.event.repository.name }}
-#         run: |
-#           git checkout $CUR_BRANCH_NAME
-#           mvn test
-#       - name: Run tests for master
-#         working-directory: ./${{ github.event.repository.name }}
-#         run: |
-#           git checkout $TARGET_BRANCH_NAME
-#           mvn test
+      - name: Run tests for $CUR_BRANCH_NAME
+        working-directory: ./${{ github.event.repository.name }}
+        run: |
+          git checkout $CUR_BRANCH_NAME
+          mvn test
+      - name: Run tests for master
+        working-directory: ./${{ github.event.repository.name }}
+        run: |
+          git checkout $TARGET_BRANCH_NAME
+          mvn test
 
-#       - name: merge master with $CUR_BRANCH_NAME
-#         working-directory: ./${{ github.event.repository.name }}
-#         run: git merge selection-sort
-#       - name: Run tests for merge result
-#         working-directory: ./${{ github.event.repository.name }}
-#         run: mvn test
+      - name: merge master with $CUR_BRANCH_NAME
+        working-directory: ./${{ github.event.repository.name }}
+        run: git merge selection-sort
+      - name: Run tests for merge result
+        working-directory: ./${{ github.event.repository.name }}
+        run: mvn test
 
 
 
