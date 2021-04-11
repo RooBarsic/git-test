@@ -36,7 +36,7 @@ jobs:
         run: echo ${GITHUB_REF##*/}
         
       - name: testii
-        run: echo ${{GITHUB_REF##*/}}
+        run: echo $GITHUB_REF
 
 #       - name: git clone
 #         run: git clone --branch master https://github.com/$REPOSITORY_AND_OWNER_NAME.git
