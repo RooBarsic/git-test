@@ -16,13 +16,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: github-actions-testing
+          ref: bubble-sort
       - name: ls -l
         run: ls -l
       - name: check branch
         run: git branch
-      - name: clone bubble-sort
-        uses: actions/checkout@v2
-        with:
-          ref: bubble-sort
       - name: check branch
         run: git branch
