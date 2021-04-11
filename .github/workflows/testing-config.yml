@@ -23,6 +23,8 @@ jobs:
         id: extract_branch      
       - name: show extracted branch name
         run: echo ${{ steps.extract_branch.outputs.branch }}
+      - name: show repo owner/ repo name
+        run: ${{ github.repository }}
 
       - name: git clone
         run: git clone --branch master https://github.com/RooBarsic/git-test.git
