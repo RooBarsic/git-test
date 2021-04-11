@@ -31,6 +31,14 @@ jobs:
       - name: check branch
         working-directory: ./git-test
         run: git branch
+      - name: merge branches
+        working-directory: ./git-test
+        run: git merge bubble-sort
+      - name: repository status
+        working-directory: ./git-test
+        run: git status
+      
+       
 
 
 
