@@ -28,7 +28,6 @@ jobs:
       - name: cloning another branch
         working-directory: ./git-test
         run: |
-          git switch -c buble-sort origin/buble-sort
           git branch
 
 
