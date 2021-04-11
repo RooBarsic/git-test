@@ -10,6 +10,9 @@ jobs:
     runs-on: [ubuntu-18.04]
 
     steps:
+# target bracnh name for pull request - ${{ github.event.pull_request.base.ref }}
+# 
+
 #       - name: Java version
 #         run: java -version
 #       - name: Installing maven
@@ -27,6 +30,8 @@ jobs:
         run: echo https://github.com/${{ github.repository }}.git
       - name: only repo name
         run: echo ${{ github.event.repository.name }}
+      - name: APPLICATION_NAME
+        run: APPLICATION_NAME
 
       - name: git clone
         run: git clone --branch master https://github.com/${{ github.repository }}.git
