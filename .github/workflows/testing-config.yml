@@ -38,7 +38,7 @@ jobs:
       - name: testii
         run: echo $GITHUB_REF
       - name: CI_HEAD_REF_SLUG
-        run: echo $CI_HEAD_REF_SLUG
+        run: echo "$CI_HEAD_REF_SLUG"
 
 #       - name: git clone
 #         run: git clone --branch master https://github.com/$REPOSITORY_AND_OWNER_NAME.git
