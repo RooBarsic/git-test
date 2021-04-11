@@ -51,7 +51,7 @@ jobs:
         run: echo $CUR_REPOSITORY_NAME
       
       - name: showwww....
-        run: echo https://github.com/ $REPOSITORY_AND_OWNER_NAME .git
+        run: echo https://github.com/$REPOSITORY_AND_OWNER_NAME.git
 
       - name: git clone
         run: git clone --branch master https://github.com/${{ github.repository }}.git
