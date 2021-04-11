@@ -24,10 +24,10 @@ jobs:
       - name: show extracted branch name
         run: echo ${{ steps.extract_branch.outputs.branch }}
       - name: show repo owner/ repo name
-        run: echo ${{ github.repository }}
+        run: echo https://github.com/${{ github.repository }}.git
 
       - name: git clone
-        run: git clone --branch master https://github.com/RooBarsic/git-test.git
+        run: git clone --branch master https://github.com/${{ github.repository }}.git
       - name: cloning another branch
         working-directory: ./git-test
         run: git fetch origin selection-sort:selection-sort
