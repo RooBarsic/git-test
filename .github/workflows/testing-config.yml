@@ -10,12 +10,12 @@ jobs:
     runs-on: [ubuntu-18.04]
 
     steps:
-      - name: Java version
-        run: java -version
-      - name: Installing maven
-        run: sudo apt-get -y install maven
-      - name: Maven version
-        run: mvn -version
+#       - name: Java version
+#         run: java -version
+#       - name: Installing maven
+#         run: sudo apt-get -y install maven
+#       - name: Maven version
+#         run: mvn -version
   
       - name: Extract current branch name
         shell: bash
@@ -38,27 +38,27 @@ jobs:
         working-directory: ./git-test
         run: git branch
 
-      - name: Run tests for selection-sort
-        working-directory: ./git-test
-        run: |
-          git checkout selection-sort
-          mvn test
-      - name: Run tests for master
-        working-directory: ./git-test
-        run: |
-          git checkout master
-          mvn test
-      - name: init git config
-        working-directory: ./git-test
-        run: |
-          git config --global user.email "actions_github@gmail.com"
-          git config --global user.name "Github Actions"          
-      - name: merge branches
-        working-directory: ./git-test
-        run: git merge selection-sort
-      - name: Run tests for merged branchesh
-        working-directory: ./git-test
-        run: mvn test
+#       - name: Run tests for selection-sort
+#         working-directory: ./git-test
+#         run: |
+#           git checkout selection-sort
+#           mvn test
+#       - name: Run tests for master
+#         working-directory: ./git-test
+#         run: |
+#           git checkout master
+#           mvn test
+#       - name: init git config
+#         working-directory: ./git-test
+#         run: |
+#           git config --global user.email "actions_github@gmail.com"
+#           git config --global user.name "Github Actions"          
+#       - name: merge branches
+#         working-directory: ./git-test
+#         run: git merge selection-sort
+#       - name: Run tests for merged branchesh
+#         working-directory: ./git-test
+#         run: mvn test
 
 
 
