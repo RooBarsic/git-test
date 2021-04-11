@@ -16,9 +16,185 @@ jobs:
         run: sudo apt-get -y install maven
       - name: Maven version
         run: mvn -version
-      - name: Clone repository
-        uses: actions/checkout@v1
+      - name: pwd
+        run: pwd
+      - name: git clone
+        run: git clone --branch master https://github.com/RooBarsic/git-test.git
+      - name: cloning another branch
+        working-directory: ./git-test
+        run: git fetch origin selection-sort:selection-sort
       - name: check branch
+        working-directory: ./git-test
         run: git branch
-      - name: Run tests
+      - name: Run tests for selection-sort
+        working-directory: ./git-test
+        run: |
+          git checkout selection-sort
+          mvn test
+      - name: Run tests for master
+        working-directory: ./git-test
+        run: |
+          git checkout master
+          mvn test
+      - name: init git config
+        working-directory: ./git-test
+        run: |
+          git config --global user.email "actions_github@gmail.com"
+          git config --global user.name "Github Actions"          
+      - name: merge branches
+        working-directory: ./git-test
+        run: git merge selection-sort
+      - name: Run tests for merged branchesh
+        working-directory: ./git-test
         run: mvn test
+
+
+
+
+
+#  Full correct checking
+#      - name: Java version
+#        run: java -version
+#      - name: Installing maven
+#        run: sudo apt-get -y install maven
+#      - name: Maven version
+#        run: mvn -version
+#      - name: pwd
+#        run: pwd
+#      - name: git clone
+#        run: git clone --branch master https://github.com/RooBarsic/git-test.git
+#      - name: cloning another branch
+#        working-directory: ./git-test
+#        run: git fetch origin selection-sort:selection-sort
+#      - name: check branch
+#        working-directory: ./git-test
+#        run: git branch
+#      - name: Run tests for selection-sort
+#        working-directory: ./git-test
+#        run: |
+#          git checkout selection-sort
+#          mvn test
+#      - name: Run tests for master
+#        working-directory: ./git-test
+#        run: |
+#          git checkout master
+#          mvn test
+#      - name: init git config
+#        working-directory: ./git-test
+#        run: |
+#          git config --global user.email "actions_github@gmail.com"
+#          git config --global user.name "Github Actions"
+#      - name: merge branches
+#        working-directory: ./git-test
+#        run: git merge selection-sort
+#      - name: Run tests for merged branchesh
+#        working-directory: ./git-test
+#        run: mvn test
+
+
+
+
+
+# Testing version ( clones branches by 'git clone', merge branche, and test merged result'
+#       - name: Java version
+#         run: java -version
+#       - name: Installing maven
+#         run: sudo apt-get -y install maven
+#       - name: Maven version
+#         run: mvn -version
+#       - name: pwd
+#         run: pwd
+#       - name: git clone
+#         run: git clone --branch github-actions-testing https://github.com/RooBarsic/git-test.git
+#       - name: Run tests for github-actions-testing
+#         working-directory: ./git-test
+#         run: mvn test
+#       - name: ls -l
+#         run: ls -l
+#       - name: ls -la
+#         working-directory: ./git-test
+#         run: ls -la
+#       - name: pwd
+#         working-directory: ./git-test
+#         run: pwd
+#       - name: check branch
+#         working-directory: ./git-test
+#         run: git branch
+#       - name: cloning another branch
+#         working-directory: ./git-test
+#         run: git fetch origin bubble-sort:bubble-sort
+#       - name: check branch
+#         working-directory: ./git-test
+#         run: git branch
+#       - name: init git config
+#         working-directory: ./git-test
+#         run: |
+#           git config --global user.email "actions_github@gmail.com"
+#           git config --global user.name "Github Actions"          
+#       - name: merge branches
+#         working-directory: ./git-test
+#         run: |
+#           git merge bubble-sort
+#           git status
+#       - name: repository status
+#         working-directory: ./git-test
+#         run: git status
+#       - name: Run tests for merged branchesh
+#         working-directory: ./git-test
+#         run: mvn test
+
+
+
+
+
+# trying to load two branches with GithubActions tools
+#       - name: pwd
+#         run: pwd
+#       - name: create folder1
+#         run: mkdir folder1
+#       - name: create folder2
+#         run: mkdir folder2
+#       - name: cmod folder1
+#         run: chmod 777 folder1
+#       - name: cmod folder2
+#         run: chmod 777 folder2      
+#       - name: ls -l
+#         run: ls -l
+#       - name: go to folder1
+#         run: cd folder1
+#       - name: pwd
+#         run: pwd
+#       - name: clone github-actions-testing
+#         uses: actions/checkout@v2
+#         with:
+#            ref: github-actions-testing
+#       - name: ls -l
+#         run: ls -l
+#       - name: pwd
+#         run: pwd
+#       - name: check branch
+#         run: git branch
+#       - name: go up
+#         run: cd ..
+#       - name: pwd
+#         run: pwd
+#       - name: ls -l
+#         run: ls -l
+#       - name: go to folder2
+#         run: cd folder2
+#       - name: clone buble-sort
+#         uses: actions/checkout@v2
+#         with:
+#            ref: buble-sort
+#       - name: ls -l
+#         run: ls -l
+#       - name: check branch
+#         run: git branch
+#       - name: go back and check folder1
+#         run: cd ..
+#       - name: ls -l
+#         run: ls -l
+#       - name: go to folder1
+#         run: cd folder1
+#       - name: check branch
+#         run: git branch
