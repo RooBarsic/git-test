@@ -10,17 +10,13 @@ jobs:
     runs-on: [ubuntu-18.04]
 
     steps:
-      - name: Java version
-        run: java -version
-      - name: Installing maven
-        run: sudo apt-get -y install maven
-      - name: Maven version
-        run: mvn -version
-      - name: Clone repository
-        uses: actions/checkout@v1
+#      - name: Clone repository
+#        uses: actions/checkout@v1
+      - name: clone cur branch
+        uses: actions/checkout@v2
+          with:
+            ref: github-actions-testing
       - name: ls -l
         run: ls -l
       - name: check branch
         run: git branch
-      - name: Run tests
-        run: mvn test
