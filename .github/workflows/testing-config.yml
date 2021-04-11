@@ -4,7 +4,7 @@ env:
   GIT_DEFAULT_USER_EMAIL : "actions_github@gmail.com"
 
   TARGET_BRANCH_NAME : "master" #${{ github.event.pull_request.base.ref }}
-  CUR_BRANCH_NAME : ${{GITHUB_REF##*/}}  #"selection-sort" #"##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+  CUR_BRANCH_NAME : $GITHUB_REF##*/  #"selection-sort" #"##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
   CUR_REPOSITORY_NAME : ./${{ github.event.repository.name }}
   REPOSITORY_AND_OWNER_NAME : ${{ github.repository }}
 
