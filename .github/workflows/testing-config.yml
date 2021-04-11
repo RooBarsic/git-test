@@ -15,7 +15,7 @@ jobs:
       - name: clone github-actions-testing
         uses: actions/checkout@v2
         with:
-          checkout: github-actions-testing, master
+          repository: RooBarsic/git-test
       - name: ls -l
         run: ls -l
       - name: check branch
