@@ -14,7 +14,8 @@ jobs:
 #        uses: actions/checkout@v1
       - name: clone github-actions-testing
         uses: actions/checkout@v2
-          checkout: ['github-actions-testing', 'bubble-sort']
+        with:
+          checkout: github-actions-testing, master
       - name: ls -l
         run: ls -l
       - name: check branch
