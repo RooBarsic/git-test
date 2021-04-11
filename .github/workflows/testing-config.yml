@@ -55,8 +55,8 @@ jobs:
 
       - name: git clone
         run: git clone --branch master https://github.com/${{ github.repository }}.git
-      - name: cloning another branch 
-        working-directory: ./$CUR_REPOSITORY_NAME
+      - name: checking repo 
+        working-directory: ./git-test
         run: ls -la
       - name: cloning another branch 
         working-directory: ./$CUR_REPOSITORY_NAME
