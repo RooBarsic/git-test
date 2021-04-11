@@ -37,6 +37,10 @@ jobs:
         
       - name: testii
         run: echo $GITHUB_REF
+      - name: test_1
+        run: echo ${{ github.head_ref }}
+      - name: test_2
+        run: echo ${{ github.base_ref }}
 
 #       - name: git clone
 #         run: git clone --branch master https://github.com/$REPOSITORY_AND_OWNER_NAME.git
