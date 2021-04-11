@@ -25,6 +25,13 @@ jobs:
       - name: check branch
         working-directory: ./git-test
         run: git branch
+      - name: cloning another branch
+        working-directory: ./git-test
+        run: |
+          git checkout origin/buble-sort
+          git checkout buble-sort
+          git branch
+
 
 
 # trying to load two branches with GithubActions tools
