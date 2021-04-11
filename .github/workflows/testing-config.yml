@@ -32,6 +32,8 @@ jobs:
 
       - name: CUR_BRANCH_NAME
         run: echo $CUR_BRANCH_NAME
+      - name: cur branch
+        run: echo ${GITHUB_REF##*/}
 
 #       - name: git clone
 #         run: git clone --branch master https://github.com/$REPOSITORY_AND_OWNER_NAME.git
