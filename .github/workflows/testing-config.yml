@@ -35,6 +35,8 @@ jobs:
         run: echo ${{ github.event.repository.name }}
       - name: showing TARGET_BRANCH_NAME
         run: echo $TARGET_BRANCH_NAME
+      - name: origin
+        run: echo ${{ github.event.pull_request.base.ref }}
       - name: showing APPLICATION_NAME
         run: echo $APPLICATION_NAME
       - name: showing CUR_BRANCH_NAME
