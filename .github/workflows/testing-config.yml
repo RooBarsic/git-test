@@ -52,7 +52,7 @@ jobs:
       
 
       - name: git clone
-        run: git clone --branch master https://github.com/${{REPOSITORY_AND_OWNER_NAME}}.git
+        run: git clone --branch master https://github.com/ $REPOSITORY_AND_OWNER_NAME .git
       - name: cloning another branch 
         working-directory: ./$CUR_REPOSITORY_NAME
         run: git fetch origin selection-sort:selection-sort
