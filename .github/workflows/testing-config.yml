@@ -27,9 +27,10 @@ jobs:
         run: git branch
       - name: cloning another branch
         working-directory: ./git-test
-        run: |
-          git fetch origin bubble-sort:bubble-sort
-          git branch
+        run: git fetch origin bubble-sort:bubble-sort
+      - name: check branch
+        working-directory: ./git-test
+        run: git branch
 
 
 
