@@ -16,16 +16,24 @@ jobs:
     runs-on: [ubuntu-18.04]
 
     steps:
-      - name: Java version
-        run: java -version
-      - name: Installing maven
-        run: sudo apt-get -y install maven
-      - name: Maven version
-        run: mvn -version
-      - name: init git config
+      - name: Presetting the working environment
         run: |
+          sudo apt-get -y install maven
+          java -version
+          mvn -version
           git config --global user.name $GIT_DEFAULT_USER_NAME
-          git config --global user.email $GIT_DEFAULT_USER_EMAIL  
+          git config --global user.email $GIT_DEFAULT_USER_EMAIL
+      
+#       - name: Java version
+#         run: java -version
+#       - name: Installing maven
+#         run: sudo apt-get -y install maven
+#       - name: Maven version
+#         run: mvn -version
+#       - name: init git config
+#         run: |
+#           git config --global user.name $GIT_DEFAULT_USER_NAME
+#           git config --global user.email $GIT_DEFAULT_USER_EMAIL  
 
       # Clonning necessary branches
       - name: Clone master branch
@@ -47,7 +55,7 @@ jobs:
           mvn test
 
       # Locally merging two branches
-      - name: merge master with ${GITHUB_REF##*/}
+      - name: merge master with current branch
         working-directory: ./${{ github.event.repository.name }}
         run: git merge ${GITHUB_REF##*/}
       # Testing the result of merging
