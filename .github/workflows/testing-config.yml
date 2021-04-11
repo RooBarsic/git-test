@@ -33,7 +33,7 @@ jobs:
       - name: ls -l
         run: ls -l
       - name: go to folder2
-        run: cd folde2
+        run: cd folder2
       - name: clone buble-sort
         uses: actions/checkout@v2
         with:
@@ -47,6 +47,6 @@ jobs:
       - name: ls -l
         run: ls -l
       - name: go to folder1
-        run: cd folde1
+        run: cd folder1
       - name: check branch
         run: git branch
