@@ -2,6 +2,7 @@ name: GitTesting
 env:
   APPLICATION_NAME : "GitTesting"
 
+on: [push]
 
 jobs:
   run-tests:
