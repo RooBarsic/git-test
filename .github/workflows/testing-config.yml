@@ -16,9 +16,9 @@ jobs:
         run: git clone --branch github-actions-testing https://github.com/RooBarsic/git-test.git
       - name: ls -l
         run: ls -l
-      - name: ls -l
+      - name: ls -la
         working-directory: ./git-test
-        run: ls -l
+        run: ls -la
       - name: pwd
         working-directory: ./git-test
         run: pwd
