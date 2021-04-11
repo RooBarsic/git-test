@@ -2,11 +2,11 @@ name: GitTesting
 env:
   GIT_DEFAULT_USER_NAME : "Github Actions"
   GIT_DEFAULT_USER_EMAIL : "actions_github@gmail.com"
-  APPLICATION_NAME : "GitTesting"
-  TARGET_BRANCH_NAME : ${{ github.event.pull_request.base.ref }}
-  CUR_BRANCH_NAME : "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-  REPOSITORY_AND_OWNER_NAME : ${{ github.repository }}
+
+  TARGET_BRANCH_NAME : "master" #${{ github.event.pull_request.base.ref }}
+  CUR_BRANCH_NAME : "selection-sort" #"##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
   CUR_REPOSITORY_NAME : ./${{ github.event.repository.name }}
+  REPOSITORY_AND_OWNER_NAME : ${{ github.repository }}
 
 on: [push]
 
@@ -19,77 +19,45 @@ jobs:
 # target bracnh name for pull request - ${{ github.event.pull_request.base.ref }}
 # 
 
-#       - name: Java version
-#         run: java -version
-#       - name: Installing maven
-#         run: sudo apt-get -y install maven
-#       - name: Maven version
-#         run: mvn -version
+      - name: Java version
+        run: java -version
+      - name: Installing maven
+        run: sudo apt-get -y install maven
+      - name: Maven version
+        run: mvn -version
   
-      - name: Extract current branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch      
-      - name: show extracted branch name
-        run: echo ${{ steps.extract_branch.outputs.branch }}
-      - name: show repo owner/ repo name
-        run: echo https://github.com/${{ github.repository }}.git
-      - name: only repo name
-        run: echo ${{ github.event.repository.name }}
-      - name: showing TARGET_BRANCH_NAME
-        run: echo $TARGET_BRANCH_NAME
-      - name: origin
-        run: echo ${{ github.event.pull_request.base.ref }}
-
-      - name: showing APPLICATION_NAME
-        run: echo $APPLICATION_NAME
-      - name: showing CUR_BRANCH_NAME
-        run: echo $CUR_BRANCH_NAME
-      - name: showing REPOSITORY_AND_OWNER_NAME
-        run: echo $REPOSITORY_AND_OWNER_NAME
-      - name: showing CUR_REPOSITORY_NAME
-        run: echo CUR_REPOSITORY_NAME
-      
-      - name: showwww....
-        run: echo https://github.com/$REPOSITORY_AND_OWNER_NAME.git
 
       - name: git clone
         run: git clone --branch master https://github.com/$REPOSITORY_AND_OWNER_NAME.git
-      - name: checking repo 
-        working-directory: ./${{ github.event.repository.name }}
-        run: ls -la
-      - name: checking branch repo 
-        working-directory: ./${{ github.event.repository.name }}
-        run: git branch
       - name: cloning another branch 
         working-directory: ./${{ github.event.repository.name }}
-        run: git fetch origin selection-sort:selection-sort
+        run: git fetch origin $CUR_BRANCH_NAME:$CUR_BRANCH_NAME
 
       - name: check branch
         working-directory: ./${{ github.event.repository.name }}
         run: git branch
 
-#       - name: Run tests for selection-sort
-#         working-directory: ./${{ github.event.repository.name }}
-#         run: |
-#           git checkout selection-sort
-#           mvn test
-#       - name: Run tests for master
-#         working-directory: ./${{ github.event.repository.name }}
-#         run: |
-#           git checkout master
-#           mvn test
-#       - name: init git config
-#         working-directory: ./${{ github.event.repository.name }}
-#         run: |
-#           git config --global user.name $GIT_DEFAULT_USER_NAME
-#           git config --global user.email $GIT_DEFAULT_USER_EMAIL
-#       - name: merge branches
-#         working-directory: ./${{ github.event.repository.name }}
-#         run: git merge selection-sort
-#       - name: Run tests for merged branchesh
-#         working-directory: ./${{ github.event.repository.name }}
-#         run: mvn test
+      - name: Run tests for selection-sort
+        working-directory: ./${{ github.event.repository.name }}
+        run: |
+          git checkout $CUR_BRANCH_NAME
+          mvn test
+      - name: Run tests for master
+        working-directory: ./${{ github.event.repository.name }}
+        run: |
+          git checkout $TARGET_BRANCH_NAME
+          mvn test
+      - name: init git config
+        working-directory: ./${{ github.event.repository.name }}
+        run: |
+          git config --global user.name $GIT_DEFAULT_USER_NAME
+          git config --global user.email $GIT_DEFAULT_USER_EMAIL
+      - name: merge branches
+        working-directory: ./${{ github.event.repository.name }}
+        run: git merge selection-sort
+      - name: Run tests for merged branchesh
+        working-directory: ./${{ github.event.repository.name }}
+        run: mvn test
 
 
 
