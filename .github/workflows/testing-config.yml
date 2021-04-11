@@ -26,7 +26,7 @@ jobs:
       - name: show repo owner/ repo name
         run: echo https://github.com/${{ github.repository }}.git
       - name: only repo name
-        run: ${{ github.event.repository.name }}
+        run: echo ${{ github.event.repository.name }}
 
       - name: git clone
         run: git clone --branch master https://github.com/${{ github.repository }}.git
