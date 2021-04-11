@@ -47,7 +47,51 @@ jobs:
       - name: Run tests for merged branchesh
         working-directory: ./git-test
         run: mvn test
-      
+
+
+
+
+
+#  Full correct checking
+#      - name: Java version
+#        run: java -version
+#      - name: Installing maven
+#        run: sudo apt-get -y install maven
+#      - name: Maven version
+#        run: mvn -version
+#      - name: pwd
+#        run: pwd
+#      - name: git clone
+#        run: git clone --branch master https://github.com/RooBarsic/git-test.git
+#      - name: cloning another branch
+#        working-directory: ./git-test
+#        run: git fetch origin selection-sort:selection-sort
+#      - name: check branch
+#        working-directory: ./git-test
+#        run: git branch
+#      - name: Run tests for selection-sort
+#        working-directory: ./git-test
+#        run: |
+#          git checkout selection-sort
+#          mvn test
+#      - name: Run tests for master
+#        working-directory: ./git-test
+#        run: |
+#          git checkout master
+#          mvn test
+#      - name: init git config
+#        working-directory: ./git-test
+#        run: |
+#          git config --global user.email "actions_github@gmail.com"
+#          git config --global user.name "Github Actions"
+#      - name: merge branches
+#        working-directory: ./git-test
+#        run: git merge selection-sort
+#      - name: Run tests for merged branchesh
+#        working-directory: ./git-test
+#        run: mvn test
+
+
 
 
 
