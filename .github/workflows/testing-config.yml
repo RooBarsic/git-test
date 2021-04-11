@@ -33,6 +33,8 @@ jobs:
         run: echo ${{ github.event.repository.name }}
       - name: showing TARGET_BRANCH_NAME
         run: echo $TARGET_BRANCH_NAME
+      - name: showing APPLICATION_NAME
+        run: echo $APPLICATION_NAME
 
       - name: git clone
         run: git clone --branch master https://github.com/${{ github.repository }}.git
