@@ -18,6 +18,8 @@ jobs:
         run: mvn -version
       - name: Clone repository
         uses: actions/checkout@v1
+      - name: ls -l
+        run: ls -l
       - name: check branch
         run: git branch
       - name: Run tests
