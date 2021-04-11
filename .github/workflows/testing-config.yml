@@ -31,33 +31,33 @@ jobs:
       - name: git clone
         run: git clone --branch master https://github.com/${{ github.repository }}.git
       - name: cloning another branch 
-        working-directory: ./git-test
+        working-directory: ./${{ github.event.repository.name }}
         run: git fetch origin selection-sort:selection-sort
 
       - name: check branch
-        working-directory: ./git-test
+        working-directory: ./${{ github.event.repository.name }}
         run: git branch
 
 #       - name: Run tests for selection-sort
-#         working-directory: ./git-test
+#         working-directory: ./${{ github.event.repository.name }}
 #         run: |
 #           git checkout selection-sort
 #           mvn test
 #       - name: Run tests for master
-#         working-directory: ./git-test
+#         working-directory: ./${{ github.event.repository.name }}
 #         run: |
 #           git checkout master
 #           mvn test
 #       - name: init git config
-#         working-directory: ./git-test
+#         working-directory: ./${{ github.event.repository.name }}
 #         run: |
 #           git config --global user.email "actions_github@gmail.com"
 #           git config --global user.name "Github Actions"          
 #       - name: merge branches
-#         working-directory: ./git-test
+#         working-directory: ./${{ github.event.repository.name }}
 #         run: git merge selection-sort
 #       - name: Run tests for merged branchesh
-#         working-directory: ./git-test
+#         working-directory: ./${{ github.event.repository.name }}
 #         run: mvn test
 
 
@@ -73,6 +73,16 @@ jobs:
 #        run: mvn -version
 #      - name: pwd
 #        run: pwd
+#       - name: Extract current branch name
+#         shell: bash
+#         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+#         id: extract_branch      
+#       - name: show extracted branch name
+#         run: echo ${{ steps.extract_branch.outputs.branch }}
+#       - name: show repo owner/ repo name
+#         run: echo https://github.com/${{ github.repository }}.git
+#       - name: only repo name
+#         run: echo ${{ github.event.repository.name }}
 #      - name: git clone
 #        run: git clone --branch master https://github.com/RooBarsic/git-test.git
 #      - name: cloning another branch
