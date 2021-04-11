@@ -2,6 +2,8 @@ name: GitTesting
 env:
   APPLICATION_NAME : "GitTesting"
   TARGET_BRANCH_NAME : ${{ github.event.pull_request.base.ref }}
+  CUR_BRANCH_NAME : "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+  REPOSITORY_AND_OWNER_NAME : ${{ github.repository }}
 
 on: [push]
 
@@ -35,6 +37,10 @@ jobs:
         run: echo $TARGET_BRANCH_NAME
       - name: showing APPLICATION_NAME
         run: echo $APPLICATION_NAME
+      - name: showing CUR_BRANCH_NAME
+        run: echo $CUR_BRANCH_NAME
+      - name: showing REPOSITORY_AND_OWNER_NAME
+        run: echo $REPOSITORY_AND_OWNER_NAME
 
       - name: git clone
         run: git clone --branch master https://github.com/${{ github.repository }}.git
