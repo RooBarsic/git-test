@@ -12,11 +12,17 @@ jobs:
     steps:
 #      - name: Clone repository
 #        uses: actions/checkout@v1
-      - name: clone cur branch
+      - name: clone github-actions-testing
         uses: actions/checkout@v2
         with:
           ref: github-actions-testing
       - name: ls -l
         run: ls -l
+      - name: check branch
+        run: git branch
+      - name: clone bubble-sort
+        uses: actions/checkout@v2
+        with:
+          ref: bubble-sort
       - name: check branch
         run: git branch
