@@ -18,6 +18,10 @@ jobs:
         run: mkdir folder1
       - name: create folder2
         run: mkdir folder2
+      - name: cmod folder1
+        run: chmod 777 folder1
+      - name: cmod folder2
+        run: chmod 777 folder2      
       - name: ls -l
         run: ls -l
       - name: go to folder1
