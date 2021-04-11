@@ -55,7 +55,7 @@ jobs:
 
       - name: merge master with ${GITHUB_REF##*/}
         working-directory: ./${{ github.event.repository.name }}
-        run: git merge selection-sort
+        run: git merge ${GITHUB_REF##*/}
       - name: Run tests for merge result
         working-directory: ./${{ github.event.repository.name }}
         run: mvn test
