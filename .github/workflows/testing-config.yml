@@ -16,16 +16,24 @@ jobs:
         run: sudo apt-get -y install maven
       - name: Maven version
         run: mvn -version
-      - name: pwd
-        run: pwd
+  
+      - name: Extract current branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch      
+      - name: show extracted branch name
+        run: echo ${{ steps.extract_branch.outputs.branch }}
+
       - name: git clone
         run: git clone --branch master https://github.com/RooBarsic/git-test.git
       - name: cloning another branch
         working-directory: ./git-test
         run: git fetch origin selection-sort:selection-sort
+
       - name: check branch
         working-directory: ./git-test
         run: git branch
+
       - name: Run tests for selection-sort
         working-directory: ./git-test
         run: |
