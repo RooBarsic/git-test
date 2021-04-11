@@ -16,6 +16,14 @@ jobs:
         run: git clone --branch github-actions-testing https://github.com/RooBarsic/git-test.git
       - name: ls -l
         run: ls -l
+      - name: goto repository
+        run: cd git-test
+      - name: ls -l
+        run: ls -l
+      - name: pwd
+        run: pwd
+      - name: check branch
+        run: git branch
 
 
 # trying to load two branches with GithubActions tools
