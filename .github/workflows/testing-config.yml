@@ -10,55 +10,62 @@ jobs:
     runs-on: [ubuntu-18.04]
 
     steps:
-#      - name: Clone repository
-#        uses: actions/checkout@v1
       - name: pwd
         run: pwd
-      - name: create folder1
-        run: mkdir folder1
-      - name: create folder2
-        run: mkdir folder2
-      - name: cmod folder1
-        run: chmod 777 folder1
-      - name: cmod folder2
-        run: chmod 777 folder2      
+      - name: git clone
+        run: git clone --branch github-actions-testing https://github.com/RooBarsic/git-test.git
       - name: ls -l
         run: ls -l
-      - name: go to folder1
-        run: cd folder1
-      - name: pwd
-        run: pwd
-      - name: clone github-actions-testing
-        uses: actions/checkout@v2
-        with:
-           ref: github-actions-testing
-      - name: ls -l
-        run: ls -l
-      - name: pwd
-        run: pwd
-      - name: check branch
-        run: git branch
-      - name: go up
-        run: cd ..
-      - name: pwd
-        run: pwd
-      - name: ls -l
-        run: ls -l
-      - name: go to folder2
-        run: cd folder2
-      - name: clone buble-sort
-        uses: actions/checkout@v2
-        with:
-           ref: buble-sort
-      - name: ls -l
-        run: ls -l
-      - name: check branch
-        run: git branch
-      - name: go back and check folder1
-        run: cd ..
-      - name: ls -l
-        run: ls -l
-      - name: go to folder1
-        run: cd folder1
-      - name: check branch
-        run: git branch
+
+
+# trying to load two branches with GithubActions tools
+#       - name: pwd
+#         run: pwd
+#       - name: create folder1
+#         run: mkdir folder1
+#       - name: create folder2
+#         run: mkdir folder2
+#       - name: cmod folder1
+#         run: chmod 777 folder1
+#       - name: cmod folder2
+#         run: chmod 777 folder2      
+#       - name: ls -l
+#         run: ls -l
+#       - name: go to folder1
+#         run: cd folder1
+#       - name: pwd
+#         run: pwd
+#       - name: clone github-actions-testing
+#         uses: actions/checkout@v2
+#         with:
+#            ref: github-actions-testing
+#       - name: ls -l
+#         run: ls -l
+#       - name: pwd
+#         run: pwd
+#       - name: check branch
+#         run: git branch
+#       - name: go up
+#         run: cd ..
+#       - name: pwd
+#         run: pwd
+#       - name: ls -l
+#         run: ls -l
+#       - name: go to folder2
+#         run: cd folder2
+#       - name: clone buble-sort
+#         uses: actions/checkout@v2
+#         with:
+#            ref: buble-sort
+#       - name: ls -l
+#         run: ls -l
+#       - name: check branch
+#         run: git branch
+#       - name: go back and check folder1
+#         run: cd ..
+#       - name: ls -l
+#         run: ls -l
+#       - name: go to folder1
+#         run: cd folder1
+#       - name: check branch
+#         run: git branch
