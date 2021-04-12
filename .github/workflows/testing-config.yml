@@ -16,6 +16,8 @@ jobs:
     if : ${{ github.ref != 'refs/heads/main' }}
 
     steps:
+      - name: show github.ref
+        run: echo github.ref
       - name: Presetting the working environment
         run: |
           sudo apt-get -y install maven
