@@ -17,42 +17,42 @@ jobs:
 
     steps:
       - name: show github.ref
-        run: echo github.ref
-      - name: Presetting the working environment
-        run: |
-          sudo apt-get -y install maven
-          java -version
-          mvn -version
-          git config --global user.name $GIT_DEFAULT_USER_NAME
-          git config --global user.email $GIT_DEFAULT_USER_EMAIL      
+        run: ${{echo github.ref}}
+#       - name: Presetting the working environment
+#         run: |
+#           sudo apt-get -y install maven
+#           java -version
+#           mvn -version
+#           git config --global user.name $GIT_DEFAULT_USER_NAME
+#           git config --global user.email $GIT_DEFAULT_USER_EMAIL      
 
-      # Clone and test master branch, independently
-      - name: Clone master branch
-        run: git clone --branch master https://github.com/$REPOSITORY_AND_OWNER_NAME.git
-      - name: Run tests for master
-        working-directory: ./${{ github.event.repository.name }}
-        run: |
-          git checkout $TARGET_BRANCH_NAME
-          mvn test
+#       # Clone and test master branch, independently
+#       - name: Clone master branch
+#         run: git clone --branch master https://github.com/$REPOSITORY_AND_OWNER_NAME.git
+#       - name: Run tests for master
+#         working-directory: ./${{ github.event.repository.name }}
+#         run: |
+#           git checkout $TARGET_BRANCH_NAME
+#           mvn test
 
-      # Clone and test cur branch, independently
-      - name: Clone current branch to previously clonned master branch
-        working-directory: ./${{ github.event.repository.name }}
-        run: git fetch origin ${GITHUB_REF##*/}:${GITHUB_REF##*/}
-      - name: Run tests for current branch
-        working-directory: ./${{ github.event.repository.name }}
-        run: |
-          git checkout ${GITHUB_REF##*/}
-          mvn test
+#       # Clone and test cur branch, independently
+#       - name: Clone current branch to previously clonned master branch
+#         working-directory: ./${{ github.event.repository.name }}
+#         run: git fetch origin ${GITHUB_REF##*/}:${GITHUB_REF##*/}
+#       - name: Run tests for current branch
+#         working-directory: ./${{ github.event.repository.name }}
+#         run: |
+#           git checkout ${GITHUB_REF##*/}
+#           mvn test
 
-      # Locally merge two branches
-      - name: merge master with current branch
-        working-directory: ./${{ github.event.repository.name }}
-        run: git merge ${GITHUB_REF##*/}
-      # Testing the result of merging
-      - name: Run tests for merge result
-        working-directory: ./${{ github.event.repository.name }}
-        run: mvn test
+#       # Locally merge two branches
+#       - name: merge master with current branch
+#         working-directory: ./${{ github.event.repository.name }}
+#         run: git merge ${GITHUB_REF##*/}
+#       # Testing the result of merging
+#       - name: Run tests for merge result
+#         working-directory: ./${{ github.event.repository.name }}
+#         run: mvn test
 
   current-branch-testing:
 
