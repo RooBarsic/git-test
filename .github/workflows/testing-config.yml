@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: show github.ref
-        run: ${{echo github.ref}}
+        run: echo ${{github.ref}}
 #       - name: Presetting the working environment
 #         run: |
 #           sudo apt-get -y install maven
