@@ -49,3 +49,12 @@ jobs:
       - name: Run tests for merge result
         working-directory: ./${{ github.event.repository.name }}
         run: mvn test
+
+      # Locally merging two branches
+      - name: merge master with current branch
+        working-directory: ./${{ github.event.repository.name }}
+        run: git merge ${GITHUB_REF##*/}
+      # Testing the result of merging
+      - name: Run tests for merge result
+        working-directory: ./${{ github.event.repository.name }}
+        run: mvn test
