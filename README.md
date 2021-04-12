@@ -44,7 +44,7 @@ selection-sort
 https://github.com/RooBarsic/git-test/blob/master/.github/workflows/testing-config.yml
 
 ### Склонируем master ветку и текушую вертку пулл реквеста в одну и туже директорию
-```shell
+```yml
   # Clone master and current branches
   - name: Clone master branch
     run: git clone --branch master https://github.com/owner_name/repository_name/.git
@@ -54,7 +54,7 @@ https://github.com/RooBarsic/git-test/blob/master/.github/workflows/testing-conf
     run: git fetch origin cur_branch_name:cur_branch_name
 ```
 В нашем примере будет так
-```shell
+```yml
   # Clone master and current branches
   - name: Clone master branch
     run: git clone --branch master https://github.com/RooBarsic/git-test/.git
@@ -65,12 +65,12 @@ https://github.com/RooBarsic/git-test/blob/master/.github/workflows/testing-conf
 ```
 ### Локально смёрджим обе ветки в одну
 * PS: для этого может понадобится настроить в гите `user.name` и `user.email`
-```shell
+```git
   git config --global user.name $GIT_DEFAULT_USER_NAME
   git config --global user.email $GIT_DEFAULT_USER_EMAIL  
 ```
 Для мёрджа используем команду `git merge branch name`
-```shell
+```yml
   # Locally merge two branches
   - name: merge master with current branch
     working-directory: ./repository_name
@@ -79,7 +79,7 @@ https://github.com/RooBarsic/git-test/blob/master/.github/workflows/testing-conf
       git merge cur_branch_name
 ```
 В нашем примере будет как
-```shell
+```yml
   # Locally merge two branches
   - name: merge master with current branch
     working-directory: ./git-test
@@ -89,7 +89,7 @@ https://github.com/RooBarsic/git-test/blob/master/.github/workflows/testing-conf
 ```
 
 ### Протестируем мёрдж
-```shell
+```yml
   # Testing the result of merging
   - name: Run tests for merge result
     working-directory: ./repository_name
