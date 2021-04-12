@@ -11,10 +11,10 @@ TeamCity реализует интеграцию с целым рядом VCS ho
 сообщит о результате тестирование предворительного мёрджа.
 
 ## Реализация:
-###info
+##info
 Данный пример написан на Java8 с использованием maven.
 
-###Шаги
+##Шаги
 * создадим из `master` - три ветки :
 ```shell
 bubble-sort
@@ -39,7 +39,7 @@ selection-sort
 
 #Немного про решение:
 
-###Склонируем master ветку и текушую вертку пулл реквеста в одну и туже директорию
+## Склонируем master ветку и текушую вертку пулл реквеста в одну и туже директорию
 ```shell
   # Clone master and current branches
   - name: Clone master branch
@@ -59,7 +59,7 @@ selection-sort
     working-directory: ./git-test
     run: git fetch origin selection-sort:selection-sort
 ```
-###Локально смёрджим обе ветки в одну
+### Локально смёрджим обе ветки в одну
 * PS: для этого может понадобится настроить в гите `user.name` и `user.email`
 ```shell
   git config --global user.name $GIT_DEFAULT_USER_NAME
@@ -84,7 +84,7 @@ selection-sort
       git merge selection-sort
 ```
 
-###Протестируем мёрдж
+## Протестируем мёрдж
 ```shell
   # Testing the result of merging
   - name: Run tests for merge result
