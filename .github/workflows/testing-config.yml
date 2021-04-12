@@ -25,23 +25,23 @@ jobs:
           git config --global user.name $GIT_DEFAULT_USER_NAME
           git config --global user.email $GIT_DEFAULT_USER_EMAIL      
 
-      # Clone and test master branch, independently
+      # Clone master and current branches
       - name: Clone master branch
         run: git clone --branch master https://github.com/$REPOSITORY_AND_OWNER_NAME.git
-      - name: Run tests for master
-        working-directory: ./${{ github.event.repository.name }}
-        run: |
-          git checkout $TARGET_BRANCH_NAME
-          mvn test
-
-      # Clone and test cur branch, independently
       - name: Clone current branch to previously clonned master branch
         working-directory: ./${{ github.event.repository.name }}
         run: git fetch origin ${GITHUB_REF##*/}:${GITHUB_REF##*/}
+
+      # Test current and master branches, independently
       - name: Run tests for current branch
         working-directory: ./${{ github.event.repository.name }}
         run: |
           git checkout ${GITHUB_REF##*/}
+          mvn test
+      - name: Run tests for master
+        working-directory: ./${{ github.event.repository.name }}
+        run: |
+          git checkout $TARGET_BRANCH_NAME
           mvn test
 
       # Locally merge two branches
