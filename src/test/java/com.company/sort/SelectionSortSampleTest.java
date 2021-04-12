@@ -2,10 +2,7 @@ package com.company.sort;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -38,6 +35,23 @@ public class SelectionSortSampleTest {
         Collections.shuffle(shuffledList);
 
         final SelectionSortSample<Integer> bubbleSortSample = new SelectionSortSample<>();
+
+        bubbleSortSample.sort(shuffledList);
+
+        assertEquals(sortedList, shuffledList);
+    }
+
+    @Test
+    public void canSortCharacters() {
+        final List<Character> sortedList = new LinkedList<>();
+        for (char i = 'a'; i <= 'z'; i++) {
+            sortedList.add(i);
+        }
+        final List<Character> shuffledList = new ArrayList<>(sortedList);
+
+        Collections.shuffle(shuffledList);
+
+        final SelectionSortSample<Character> bubbleSortSample = new SelectionSortSample<>();
 
         bubbleSortSample.sort(shuffledList);
 
