@@ -6,7 +6,7 @@ env:
   TARGET_BRANCH_NAME : "master"
   REPOSITORY_AND_OWNER_NAME : ${{ github.repository }}
 
-on: [push]
+on: [pull_request]
 
 jobs:
   run-tests:
