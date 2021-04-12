@@ -1,4 +1,4 @@
-name: GitTesting
+name: MergedTesting
 env:
   GIT_DEFAULT_USER_NAME : "Github Actions"
   GIT_DEFAULT_USER_EMAIL : "actions_github@gmail.com"
