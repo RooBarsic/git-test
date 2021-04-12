@@ -5,6 +5,7 @@ env:
 
   TARGET_BRANCH_NAME : "master"
   REPOSITORY_AND_OWNER_NAME : ${{ github.repository }}
+  CURRENT_BRANCH_NAME : ${{ ${GITHUB_REF##*/} }}
 
 on: [push]
 
@@ -12,7 +13,7 @@ jobs:
   merged-testing:
 
     runs-on: [ubuntu-18.04]
-    if : ${GITHUB_REF##*/} != $TARGET_BRANCH_NAME
+    if : $CURRENT_BRANCH_NAME != $TARGET_BRANCH_NAME
 
     steps:
       - name: Presetting the working environment
