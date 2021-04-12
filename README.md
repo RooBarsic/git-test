@@ -40,6 +40,9 @@ selection-sort
 
 ## Немного про решение:
 
+#### Конечный код скрипта можно посмотреть тут :
+https://github.com/RooBarsic/git-test/blob/master/.github/workflows/testing-config.yml
+
 ### Склонируем master ветку и текушую вертку пулл реквеста в одну и туже директорию
 ```shell
   # Clone master and current branches
