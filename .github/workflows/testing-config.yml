@@ -48,3 +48,4 @@ jobs:
       # Testing the result of merging
       - name: Run tests for merge result
         working-directory: ./${{ github.event.repository.name }}
+        run: mvn test
