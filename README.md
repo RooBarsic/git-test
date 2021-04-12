@@ -96,7 +96,7 @@ https://github.com/RooBarsic/git-test/blob/master/.github/workflows/testing-conf
     run: mvn test
 ```
 В нашем примере будет как
-```shell
+```yml
   # Testing the result of merging
   - name: Run tests for merge result
     working-directory: ./git-test
